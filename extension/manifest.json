@@ -2,6 +2,18 @@
 	"manifest_version": 2,
 	"name": "YT Filter",
 	"version": 0.1,
+  "description": "Allows you to block content from specific users on YouTube",
 
-	"description": "Allows you to block content from specific users on YouTube"
+	"icons": {
+		"48": "gfx/icon-48.png"
+	},
+
+	"background": {
+		"scripts": ["js/settings_script.js"]
+	},
+
+	"content_scripts": {
+		"matches": ["*://www.youtube.com/*"],
+		"js": ["js/blocking_script.js", "js/add_blocked.js"]
+	}
 }
