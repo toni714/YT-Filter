@@ -4,12 +4,10 @@
 	"version": 0.1,
   "description": "Allows you to block content from specific users on YouTube",
 
+	"permissions": ["tabs", "storage"],
+
 	"icons": {
 		"48": "gfx/icon-48.png"
-	},
-
-	"background": {
-		"scripts": ["js/settings_script.js"]
 	},
 
 	"content_scripts": {
