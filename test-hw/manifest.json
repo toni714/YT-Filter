@@ -1,0 +1,16 @@
+{
+
+	"manifest_version": 2,
+	"name": "Test HW",
+	"version": "1.0",
+
+  "description": "To test hello world, alert and log.",
+
+	"content_scripts": [
+    {
+      "matches": ["*://*/*"],
+      "js": ["test.js"]
+    }
+  ]
+
+}
