@@ -1,0 +1,7 @@
+{
+	"manifest_version": 2,
+	"name": "YT Filter",
+	"version": 0.1,
+
+	"description": "Allows you to block content from specific users on YouTube"
+}
