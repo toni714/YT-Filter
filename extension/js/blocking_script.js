@@ -89,3 +89,8 @@ function Video(title, thumbnail, username, dom_video){
     console.log("USERNAME: "+this.username+" TITLE: "+this.title+" THUMBNAIL: "+this.thumbnail+" DOM: "+this.dom_video);
   }
 }
+
+//----UNUSED (for future use)
+function save_blocked_users(blocked_users_save){
+  browser.storge.local.set({blocked_users: blocked_users_save});
+}
