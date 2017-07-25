@@ -82,6 +82,7 @@ function insertAllVideosFromDOMIn(blocked_dict){
 
   //iterate over all videos
   for(var i=0;i<dom_videos.length;i++){
+    //copy down the videos DOM Element, title, user and thumbnail depending what kind of video it is for later use
     var dom_video=dom_videos[i];
     var title=null;
     var thumbnail=dom_video.getElementsByTagName("img")[0];
@@ -96,12 +97,15 @@ function insertAllVideosFromDOMIn(blocked_dict){
     }
     var vid=new Video(title, thumbnail, username, dom_videos[i])
     //vid.print_self();
+    //if the videos username is in the blocked users add it to that users list in the blocked_dict
     if(blocked_dict.hasOwnProperty(vid.username)){
       blocked_dict[vid.username].push(vid);
     }
   }
 }
 
+
+//the video class
 function Video(title, thumbnail, username, dom_video){
   //----Members----
   this.title=title;
