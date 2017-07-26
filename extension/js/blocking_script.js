@@ -9,11 +9,13 @@ var typesOfPages={
 
 //get a list of the blocked users stored in the browser
 //when you receive them then blockUsers(users);
+console.log("Now im Loaded!");
 getBlockedUsersFromBrowser().then(blockUsers);
 
 //-----------------Functions---------------------
 
 function getBlockedUsersFromBrowser(){
+  console.log("Im creating a list of bad boys...");
   createDummyData();
   //return the blocked_users list stored in the browser
   return browser.storage.local.get("blocked_users");
@@ -25,7 +27,8 @@ function createDummyData(){
 }
 
 function blockUsers(users_promise){
-
+	
+	console.log("Haha, lol so many bad boys... im looking for them now");
   //get the users list from the promise
   var users=users_promise["blocked_users"];
   //Prepare the dict with empty list for all blocked users (should maybe be changed only to present users later to save memory TODO)
@@ -42,19 +45,21 @@ function blockUsers(users_promise){
     //TODO change to user.name as soon as users are created automatically as objects
     blocked_dict[user]=[];
   });
-
+	console.log("I will find the root of all evil");
   insertAllVideosFromDOMIn(blocked_dict);
   //iterate over all blocked users and their found videos
-  for(var username in blocked_dict){
+ /* for(var username in blocked_dict){
+	  console.log("Is this boy a bad boy?");
     if(blocked_dict.hasOwnProperty(username)){
+		console.log("This is one of the guys who eat my piece of cake!");
       blocked_dict[username].forEach(function (video, index){
         //TODO block this video like instructed by user REQUIRES #9 implemented/fixed
 
         //print blocked video
         video.print_self()
-      });
-    }
-  }
+      });  
+    } 
+  }	*/
 }
 
 function insertAllVideosFromDOMIn(blocked_dict){
@@ -73,6 +78,7 @@ function insertAllVideosFromDOMIn(blocked_dict){
     case typesOfPages["Watchpage"]:
       //these are the sidebar recommended videos
       dom_videos=document.getElementsByClassName("video-list-item");
+	  console.log("Current Vids: " + dom_videos.length);
       break;
     case typesOfPages["Other"]:
       //these are the videos on the homepage
@@ -82,6 +88,7 @@ function insertAllVideosFromDOMIn(blocked_dict){
 
   //iterate over all videos
   for(var i=0;i<dom_videos.length;i++){
+	  console.log("Im checking every Video. EVERY ONE!!!");
     //copy down the videos DOM Element, title, user and thumbnail depending what kind of video it is for later use
     var dom_video=dom_videos[i];
     var title=null;
@@ -95,11 +102,12 @@ function insertAllVideosFromDOMIn(blocked_dict){
         title=dom_video.getElementsByClassName("yt-lockup-title")[0].children[0].getAttribute("title");
         break;
     }
-    var vid=new Video(title, thumbnail, username, dom_videos[i])
+    //var vid=new Video(title, thumbnail, username, dom_videos[i])
     //vid.print_self();
     //if the videos username is in the blocked users add it to that users list in the blocked_dict
-    if(blocked_dict.hasOwnProperty(vid.username)){
-      blocked_dict[vid.username].push(vid);
+    if(blocked_dict.hasOwnProperty(/*vid.*/ username)){
+		console.log("USER: " + username + " ### TITLE: " + title);
+      //blocked_dict[vid.username].push(vid);
     }
   }
 }
