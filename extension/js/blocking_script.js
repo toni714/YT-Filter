@@ -10,7 +10,8 @@ var typesOfPages={
 //get a list of the blocked users stored in the browser
 //when you receive them then blockUsers(users);
 console.log("Now im Loaded!");
-chrome.storage.local.get("blocked_users", function(result){alert(result);blockUsers(result)});
+createDummyData();
+chrome.storage.local.get("blocked_users", function(result){console.log(result);blockUsers(result)});
 //getBlockedUsersFromBrowser().then(blockUsers);
 
 //-----------------Functions---------------------
