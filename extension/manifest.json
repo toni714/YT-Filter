@@ -2,7 +2,7 @@
 	"manifest_version": 2,
 	"name": "YT Filter",
 	"version": "0.1",
-  "description": "Allows you to block content from specific users on YouTube",
+	"description": "Allows you to block content from specific users on YouTube",
 
 	"permissions": ["tabs", "storage"],
 
@@ -13,6 +13,8 @@
 	"content_scripts": [
 		{
 			"matches": ["*://www.youtube.com/*"],
+			"all_frames": false,
+			"run_at": "document_idle",
 			"js": ["js/blocking_script.js"]
 		}
 	]

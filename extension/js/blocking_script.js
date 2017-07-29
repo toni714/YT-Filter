@@ -1,6 +1,6 @@
 //-----------------GlobaLs-----------------------
 
-var typesOfPages={
+/*var typesOfPages={
   "Other":0,
   "Watchpage":1
 }
@@ -10,8 +10,8 @@ var typesOfPages={
 //get a list of the blocked users stored in the browser
 //when you receive them then blockUsers(users);
 console.log("Now im Loaded!");
-getBlockedUsersFromBrowser().then(blockUsers);
-
+//getBlockedUsersFromBrowser().then(blockUsers);
+*/
 //-----------------Functions---------------------
 
 function getBlockedUsersFromBrowser(){
@@ -46,7 +46,7 @@ function blockUsers(users_promise){
     blocked_dict[user]=[];
   });
 	console.log("I will find the root of all evil");
-  insertAllVideosFromDOMIn(blocked_dict);
+//  insertAllVideosFromDOMIn(blocked_dict);
   //iterate over all blocked users and their found videos
  /* for(var username in blocked_dict){
 	  console.log("Is this boy a bad boy?");
@@ -91,22 +91,22 @@ function insertAllVideosFromDOMIn(blocked_dict){
 	  console.log("Im checking every Video. EVERY ONE!!!");
     //copy down the videos DOM Element, title, user and thumbnail depending what kind of video it is for later use
     var dom_video=dom_videos[i];
-    var title=null;
-    var thumbnail=dom_video.getElementsByTagName("img")[0];
+    //var title=null;
+  //  var thumbnail=dom_video.getElementsByTagName("img")[0];
     var username=dom_video.getElementsByClassName("g-hovercard")[0].innerHTML;
-    switch(typeOfPage){
-      case typesOfPages["Watchpage"]:
-        title=dom_video.getElementsByClassName("content-link")[0].getAttribute("title");
-        break;
-      case typesOfPages["Other"]:
-        title=dom_video.getElementsByClassName("yt-lockup-title")[0].children[0].getAttribute("title");
-        break;
-    }
+  //  switch(typeOfPage){
+ //     case typesOfPages["Watchpage"]:
+ //       title=dom_video.getElementsByClassName("content-link")[0].getAttribute("title");
+ //       break;
+ //     case typesOfPages["Other"]:
+ //       title=dom_video.getElementsByClassName("yt-lockup-title")[0].children[0].getAttribute("title");
+ //       break;
+ //   }
     //var vid=new Video(title, thumbnail, username, dom_videos[i])
     //vid.print_self();
     //if the videos username is in the blocked users add it to that users list in the blocked_dict
     if(blocked_dict.hasOwnProperty(/*vid.*/ username)){
-		console.log("USER: " + username + " ### TITLE: " + title);
+		console.log("USER: " + username);
       //blocked_dict[vid.username].push(vid);
     }
   }
